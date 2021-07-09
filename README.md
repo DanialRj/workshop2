@@ -11,3 +11,9 @@ Installasi
 
 ## Step 4
 - php artisan db:seed
+
+## Step 5
+- npm install
+
+## Step 6
+- npm run dev

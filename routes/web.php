@@ -25,8 +25,8 @@ Route::group(['namespace' => 'Auth'], function() {
 
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['namespace' => 'Auth'], function() {
-        Route::get('register', 'RegisterController@showRegistrationForm')->name('admin.register');
-        Route::post('register', 'RegisterController@register');
+        // Route::get('register', 'RegisterController@showRegistrationForm')->name('admin.register');
+        // Route::post('register', 'RegisterController@register');
         Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
         Route::post('login', 'loginController@login');
         Route::post('logout', 'LoginController@logout')->name('admin.logout');
