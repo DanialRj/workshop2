@@ -17,3 +17,6 @@ Installasi
 
 ## Step 6
 - npm run dev
+
+## Step 7
+- php artisan storage:link
