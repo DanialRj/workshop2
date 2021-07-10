@@ -24,16 +24,29 @@ Route::group(['namespace' => 'Auth'], function() {
 });
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::group(['namespace' => 'Auth'], function() {
+    Route::group(['namespace' => 'Auth', 'as' => 'admin.'], function() {
         // Route::get('register', 'RegisterController@showRegistrationForm')->name('admin.register');
         // Route::post('register', 'RegisterController@register');
-        Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
+        Route::get('login', 'LoginController@showLoginForm')->name('login');
         Route::post('login', 'loginController@login');
-        Route::post('logout', 'LoginController@logout')->name('admin.logout');
+        Route::post('logout', 'LoginController@logout')->name('logout');
     });
     
     Route::group(['middleware' => 'auth'], function() {
         Route::get('/', 'HomeController@index')->name('home');
+        Route::get('customers', 'CustomerController@index')->name('admin.customers');
+        Route::get('products', 'ProductController@index')->name('admin.products');
+        Route::get('transactions', 'TransactionController@index')->name('admin.transactions');
+
+        Route::group(['prefix' => 'categories'], function() {
+            Route::get('/', 'CategoryController@index')->name('admin.categories');
+            Route::get('create', 'CategoryController@create')->name('admin.categories.create');
+            Route::post('create', 'CategoryController@store');
+            Route::get('{id}/edit', 'CategoryController@edit')->name('admin.categories.edit');
+            Route::put('{id}/edit', 'CategoryController@update');
+            Route::delete('{id}/delete', 'CategoryController@destroy')->name('admin.categories.destroy');
+        });
+        
     });
 });
 

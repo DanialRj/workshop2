@@ -33,7 +33,27 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @if(auth()->check())
+                            <li class="nav-item">
+                                <a href="{{ route('home') }}" class="nav-link">Home</a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a href="{{ route('admin.customers') }}" class="nav-link">Customers</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.products') }}" class="nav-link">Products</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.transactions') }}" class="nav-link">Transaction</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.categories') }}" class="nav-link">Categories</a>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -55,7 +75,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
                                     
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
